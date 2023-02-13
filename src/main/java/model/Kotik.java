@@ -1,81 +1,65 @@
 package model;
 
-import java.util.Scanner;
-
 public class Kotik {
-    private String name;//переменная "имя"0
-    private int Age = 1;
-    private double Weight;//переменная "вес"
     private static int count = 0;//переменная "количество животных"
+    private String name;
+    private int age = 1;
+    private double weight;
     private int satiety = 5;// переменная "уровень сытости"
     private String say = "Myau";
 
     // конструктор с параметрами
-
-
     public Kotik(String name, int age, double weight, int satiety, String say) {
         this.name = name;
-        this.Age = age;
-        this.Weight = weight;
+        this.age = age;
+        this.weight = weight;
         this.satiety = satiety;
         this.say = say;
     }
 
-
-    public Kotik() {   //конструктор без параметров
+    //конструктор без параметров
+    public Kotik() {
     }
-
     public static int getCount() {
         return count;
-    } // геттер подсчета животных
-
+    }
 
     public String getName() {
         return name;
-    }   //геттер "имя"
-
+    }
 
     public void setName(String name) {
         this.name = name;
-    }  //сеттер "имя"
-
+    }
 
     public int getWeight() {
-        return (int) Weight;
-    } //геттер "вес"
-
+        return (int) weight;
+    }
 
     public void setWeight(int weight) {
-        Weight = weight;
-    }// сеттер вес
-
-
+        this.weight = weight;
+    }
 
     public int getAge() {
-        return Age;
-    } //геттер "возраст"
+        return age;
+    }
 
     public void setAge(int age) {
-        Age = age;
-    } //сеттер "возраст"
+        this.age = age;
+    }
 
     public String getSay() {
         return say;
     }
-
     public void setSay(String say) {
         this.say = say;
     }
-
     public int getSatiety() {
         return satiety;
     }
-
-    //геттер "удовлетворенность"
-
     public void setSatiety(int satiety) {
         this.satiety = satiety;
-    } //сеттер "удовлетворенность"
+    }
 
     // медот создания цикла 24 итерации
     public void liveAnotherDay() {
@@ -105,16 +89,17 @@ public class Kotik {
             toSatiety(); // метод проверки удовлетворенности
         }
     }
+
     // метод "кушать" увеличивает уровень сытости
     public void eat(int satiety) {
-        this.satiety = satiety;
-        this.satiety = this.satiety + 5;
+      this.satiety = satiety + 5;
     }
-    //метод "кушать" принимает "сытость" и "еду"
-    public void eat(int satiety, String food) {
-        System.out.println("Thanks! I'm full! "  + getName() + " I ate meet");
 
+    //метод "кушать" принимает "сытость" и "еду"
+    public void eat(int sat, String food) {
+        System.out.println("Thanks! I'm full! " + getName() + " I ate meet");
     }
+
     //метод "кушать" запускает методы еды
     public void eat() {
         eat(this.satiety, "meet");
@@ -126,7 +111,6 @@ public class Kotik {
         //if (this.satiety > 0) {
         System.out.println(getName() + " playing");// метод "играть"
         this.satiety = this.satiety - 1;
-
     }
     //метод "бегать", сытость уменьшилась на 1
     void ran() {
@@ -134,54 +118,47 @@ public class Kotik {
         System.out.println(getName() + " running");//метод "бегать"
         this.satiety = this.satiety - 1;
     }
+
     //метод "говорить"
     void talk() {
-
         System.out.println(getName() + " say " + getSay());
-
     }
+
     //метод "спать", сытость увеличилась на 1
-
     public void sleep() {
-
         System.out.println(getName() + " sleeping");//метод "спать"
         this.satiety = this.satiety + 1;
-
     }
+
     //метод "прыгать", сытость уменьшилась на 1
-
     public void jump() {
-
-        System.out.println(getName() + " jumping");//метод "прыгать"
+        System.out.println(getName() + " jumping");
         this.satiety = this.satiety - 1;
     }
-    //метод "поймать мышь", сытость увеличилась на 2
 
+    //метод "поймать мышь", сытость уменьшилась на 1;
     void chaseMouse() {
-        System.out.println((name + " caught a mouse")); //метод ловить
-        this.satiety = this.satiety -1;
+        System.out.println((name + " caught a mouse"));
+        this.satiety = this.satiety - 1;
     }
-    // метод подсчета количества созданных животных
 
+    // метод подсчета количества созданных животных
     public static void toCount() {
         count++;
     }
+
     // текущий статус животного
     public void currentStatus() {
         System.out.println("Kat " + " " + getName() + ": " + "Weight- " + getWeight() + ", Satiety - " + getSatiety() + ", Age " + getAge());// текщий истатус животного
-        ;//добавить инфы о текущем состоянии
-
     }
+
     // текущая удовлетворенность
     void toSatiety() {
         if (this.satiety > 0) {
             System.out.println(" pleased\n");
-
         } else {
-            System.out.println(" hungry");// показать уровень сытости
+            System.out.println(" hungry");
             eat();
-            //System.out.println(getName() + " I ate meet");
-
         }
     }
 }
